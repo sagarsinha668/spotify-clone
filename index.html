@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li class="brand"><img src="./img/logo.png" alt="Spotify">Spotify </li>
+            <li>Home</li>
+            <li>About</li>
+        </ul>
+    </nav>
+
+
+
+
+
+
+
+    <div class="container">
+        <div class="playlist">
+            <h4>Best Songs Of The Years -- Evergreen Songs</h4>
+            <div id="songscontainer"> </div>
+           
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="bottom">
+        <input type="range" name="range" id="progressbar" min="0" max="100" value="0" >
+        <div class="icon">
+            <i class="fa-2x fa-solid fa-backward" id="back"></i>
+            <i class="fa-2x fa-solid fa-play-circle " id="masterplay" ></i>
+            <i class="fa-2x fa-solid fa-forward" id="next"></i>
+        </div>
+        <div class="playinfo">
+            <img src="img/playing.gif" alt="ERROR" width="50px" id="gif"> <span id="title"></span>
+        </div>
+    </div>
+</body>
+<script src="https://kit.fontawesome.com/3101d6169b.js" crossorigin="anonymous"></script>
+<script src="script.js"></script>
+
+</html>

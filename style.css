@@ -1,0 +1,174 @@
+ *{ 
+Margin:0;
+Padding:0;
+Box-sizing: border-box;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html,body{
+Width:100%;
+Height:100%;
+background-color: antiquewhite;
+}
+nav ul{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    list-style-type: none;
+    background-color: black;
+    color: whitesmoke;
+    height: 1.9rem;
+    
+}
+ul li{
+    /* margin:2rem; */
+    padding: 1rem;
+}
+.brand img {
+    /* padding: 0.2rem; */
+    height: 1.9rem;
+    margin: 0.3rem;
+}
+.brand{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    font-weight: bolder;
+    font-size: 1rem;
+    /* margin: 30rem; */
+}
+
+/* Container */
+.songlistplay{
+    cursor: pointer;
+}
+.container{
+ min-height: 73.8vh;
+ display: flex;
+ width: 75%;
+ margin: 1rem auto;
+ padding: 1rem;
+ background-color: black;
+ color:azure;
+ border-radius: 0.7rem;
+ background-image: url("./img/bg.jpg");
+ background-size: cover;
+ background-position: center;
+}
+#songscontainer{
+    margin-top: 2rem;
+}
+.songlist{
+    margin: 1rem;
+    height: 4rem;
+    background-color: #def3f18a;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+.songlist img {
+    height: 3rem;
+    border-radius: 0.6rem;
+}
+.cursor{
+    cursor: pointer;
+}
+
+
+/* Bottom */
+ .bottom{
+    height: 4.8rem;
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    color: wheat;
+ }
+
+ #progressbar{
+  
+    width: 93%;
+    cursor: pointer;
+ }
+ .icon{
+    padding: 0.5rem;
+ }
+ .icon i {
+    padding: 0.2rem;
+    cursor: pointer;
+ }
+ .playinfo{
+    position: absolute ;
+    left: 4vw;
+ }
+ .playinfo img {
+    opacity: 0;
+    transition: opacity 1s ease-in  ;
+ }
+ @media screen and (max-width: 600px) {
+    .bottom {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    #progressbar {
+        width: 70%;
+        position: absolute;
+        top: 15px;
+        right: 50px;
+    }
+
+    .icon {
+        position: absolute;
+        bottom: 5px;
+        right: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        width: 50%;
+    }
+
+    .icon i {
+        font-size: 24px; /* Adjust icon size for mobile */
+        cursor: pointer;
+    }
+
+    .playinfo {
+        position: absolute;
+        bottom: 5px;
+        left: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .playinfo img {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        /* opacity:0; */
+        width: 40px; /* Reduce gif size for better fit */
+        height: 40px;
+    }
+
+    #title {
+        position: absolute;
+        bottom: 10px;
+        left: 50px;
+        font-size: 14px;
+        text-align: center;
+    }
+}
