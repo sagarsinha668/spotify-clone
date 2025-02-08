@@ -1,0 +1,151 @@
+let songlist = Array.from(document.getElementsByClassName("songlist"))
+let masterplay = document.getElementById("masterplay")
+let gif = document.getElementById("gif")
+let audioElement = new Audio("./img/songs/1.mp3")
+let progressbar = document.getElementById("progressbar")
+let timestape = document.getElementById("timestape")
+let songscontainer = document.getElementById("songscontainer")
+let container = document.getElementsByClassName("container")
+
+let songindex = 0
+// let masterplays = document.querySelectorAll(".masterplay")
+
+
+let songs = [{
+    songname:"Let me love you",filepath:"/img/songs/1.mp3",coverpth: "./img/covers/1.jpg"},{
+    songname:"Faded",filepath:"/img/songs/2.mp3",coverpth: "./img/covers/2.jpg"},{
+    songname:"Shape of you",filepath:"/img/songs/3.mp3",coverpth: "./img/covers/3.jpg"},{
+    songname:"Taki Taki",filepath:"/img/songs/4.mp3",coverpth: "./img/covers/4.jpg"},{
+    songname:"Treat you better",filepath:"/img/songs/5.mp3",coverpth: "./img/covers/5.jpg"},{
+    songname:"Wolves",filepath:"/img/songs/6.mp3",coverpth: "./img/covers/6.jpg"},{
+    songname:"Without me",filepath:"/img/songs/7.mp3",coverpth: "./img/covers/7.jpg"},{
+    songname:"Yummy",filepath:"/img/songs/8.mp3",coverpth: "./img/covers/8.jpg"},{
+    songname:"You belong with me",filepath:"/img/songs/9.mp3",coverpth: "./img/covers/9.jpg"},{
+    songname:"You need to calm down",filepath:"/img/songs/10.mp3",coverpth: "./img/covers/10.jpg"
+}]
+let title = document.getElementById("title")
+title.innerText = songs[songindex].songname
+
+// Update the songs list in the UI dynamically in container
+let multiaudioElement = new Audio("./img/songs/1.mp3")
+songs.forEach((song, i) => {
+    // console.log(song, i);
+    let div = document.createElement("div");
+    div.classList.add("songlist"); // Add class for styling
+
+    let img = document.createElement("img");
+    img.src = song.coverpth;
+    img.alt = song.songname;
+
+    let p = document.createElement("p");
+    p.innerText = song.songname;
+
+    let icon = document.createElement("i");
+    icon.classList.add("songlistplay", "fa-solid", "fa-play-circle"); // Correct class addition
+    icon.dataset.songindex = i; // Store index for play functionality
+    // console.log(icon.dataset.songindex)
+
+     multiaudioElement = new Audio();
+    multiaudioElement.src = songs[i].filepath;
+
+    // console.log(multiaudioElement)
+
+    div.append(img, p, icon,multiaudioElement);
+    songscontainer.append(div);
+    
+});
+
+// Play functionality at individual songs in list
+
+document.querySelectorAll(".songlistplay").forEach((icon) => {
+    icon.addEventListener("click", (event) => {
+        if (multiaudioElement.paused || multiaudioElement.currentTime <= 0) {
+            multiaudioElement.src = songs[icon.dataset.songindex].filepath;
+            multiaudioElement.play();
+            title.innerText = songs[icon.dataset.songindex].songname
+            masterplay.classList.remove("fa-play-circle");
+            masterplay.classList.add("fa-pause-circle");
+            icon.classList.remove("fa-play-circle");
+            icon.classList.add("fa-pause-circle");
+            gif.style.opacity = 1
+    
+        }
+         else {
+            multiaudioElement.pause();
+            masterplay.classList.remove("fa-pause-circle");
+            masterplay.classList.add("fa-play-circle");
+            icon.classList.remove("fa-play-circle");
+            icon.classList.add("fa-pause-circle");
+            gif.style.opacity = 0
+        }
+    });
+});
+
+//  make play function to play song by clicking on songlist
+
+// const playsong = (songindex) => {
+//     // console.log(songindex)
+//     let play_this_song = audioElement.src = multiaudioElement.src
+//     // console.log(play_this_song)
+
+//     audioElement.play()
+    
+// }
+
+// set song duration to all songs by your own
+
+
+
+
+
+// set song name and img
+// songlist.forEach((element,i) => {
+//     // console.log(element,i)
+//     element.getElementsByTagName("img")[0].src = songs[i].coverpth
+//     element.getElementsByClassName("songname")[0].innerText = songs[i].songname
+//     // x = element.getElementsByClassName("timestape")[0].innerText = new Audio("./img/songs/1.mp3").duration
+//     // console.log(x)
+// })
+
+
+
+
+
+
+// Handle Play/Pause 
+
+masterplay.addEventListener("click", () => {
+
+    if (audioElement.paused || audioElement.currentTime <= 0) {
+        audioElement.play();
+        masterplay.classList.remove("fa-play-circle");
+        masterplay.classList.add("fa-pause-circle");
+        gif.style.opacity = 1
+
+    } else {
+        audioElement.pause();
+        masterplay.classList.remove("fa-pause-circle");
+        masterplay.classList.add("fa-play-circle");
+        gif.style.opacity = 0
+    }
+});
+
+//  Handle seek baar by audio
+
+audioElement.addEventListener("timeupdate",()=>{
+    
+    progress = ((audioElement.currentTime/audioElement.duration)*100)
+    progressbar.value = progress
+    
+})
+
+//  Handle audio  by seek baar
+
+progressbar.addEventListener("change",()=>{
+
+    audioElement.currentTime = progressbar.value*audioElement.duration/100
+    if (progressbar.value == 100){
+        gif.style.opacity = 0
+    }
+
+})
